@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import './style.css';
+import sanitizeHtml from 'sanitize-html'
+import logo from './logo.svg'
+import './style.css'
 
 class Article extends Component {
   render() {
@@ -11,7 +12,7 @@ class Article extends Component {
             <a href="#">{this.props.cat}</a>
             <a href="#">3 minute read</a>
         </div>
-        {this.props.children}
+        <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(this.props.content) }}></div>
     </article>
     )
   }
@@ -49,9 +50,7 @@ class App extends Component {
             </header>
             <p>
             {this.state.articles.map(article => 
-            <Article key="{article.key}" title={article.title.rendered} cat={article.acf.category} emoji={article.acf.emoji}>
-              As a designer, your job is to understand your client’s needs. Listening to what they tell you is a good place to start, but it doesn’t end there. You gain much more insight by asking the right questions. Of course, it also helps to ask the right people and ask in the right way. Janice Gervais offers some tips to turn you into a better designer/detective.
-            </Article>
+            <Article key={article.key} title={article.title.rendered} content={article.content.rendered} cat={article.acf.category} emoji={article.acf.emoji} />
             )}</p>
             <div className="pagination">
                 <a className="right" href="#">See older articles</a>
