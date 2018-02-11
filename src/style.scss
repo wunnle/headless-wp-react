@@ -1,0 +1,298 @@
+@import "_variables";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: $blue;
+}
+
+.container {
+    width: 740px;
+    max-width: 100%;
+    margin: auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.right {
+    float: right;
+}
+
+i {
+    display: inline-block;
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    font-style: normal;
+}
+
+i.papership {
+    background: url(./img/papership.png) left center;
+    height: 24px;
+    width: 54px;
+}
+
+i.papership-bw {
+    background: url(./img/papership-bw.png) left center;
+    height: 24px;
+    width: 54px;
+}
+
+.content {
+    padding-top: 50px;
+}
+
+header {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 50px;
+    font-weight: 500;
+}
+
+header h1 {
+    font-size: 19px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: $grey;
+}
+
+header h1 a {
+    color: $dgrey;
+    background: white;
+    padding: 5px 10px;
+    margin: 0 -10px;
+    position: relative;
+    z-index: 1;
+    transition: all 0.35s $cubic;
+    width: 30px;
+    left: 0;
+}
+
+header h1 a.goLeft {
+    transform: translateX(-30px);
+    left: -200px;
+    padding-right: 130px;
+    color: $grey;
+}
+
+header h1 a.goLeft:before {
+    content: 'Back to home';
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    transform: translateY(30px);
+    line-height: 11px;
+    padding: 0 10px;
+    color: #f69225;
+    opacity: 0;
+    transition: all 0.25s $cubic;
+    width: 100%;
+    pointer-events: none;
+    left: 0;
+    font-weight: normal;
+}
+
+header h1 a.goLeft:hover:before {
+    opacity: 1;
+    transform: translateY(50px);
+    background: white;
+    pointer-events: auto;
+}
+
+header i,
+footer i.papership-bw {
+    float: left;
+    margin-left: -80px;
+    position: relative;
+    z-index: 2;
+    height: 50px;
+    top: 10px;
+}
+
+
+/* article */
+
+article {
+    margin-bottom: 55px;
+    padding-bottom: 45px;
+    border-bottom: 0px solid rgba(185, 185, 185, 0);
+    transform: translateY(30px);
+    //transition: all .45s $cubic, opacity 0.5s ease-in, border 2s ease;
+    @include animation( 'article-anim 0.5s normal forwards');
+    animation-timing-function: $cubic;
+    animation-fill-mode: forwards;
+    opacity: 0.4
+}
+
+@include keyframes(article-anim) {
+	0% {
+        transform: translateY(30px);
+        opacity: 0.4;
+        border-bottom: 0px solid rgba(185, 185, 185, 0);
+	}
+
+	100% {
+        transform: translateY(0);
+        opacity: 1;
+        border-bottom: 1px solid rgba(185, 185, 185, 0.2);
+	}
+}
+
+article.fall {
+	transform: translateY(1000px);
+}
+
+article:last-of-type {
+    /*border: none;*/
+}
+
+article h2 {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";    font-size: 18px;
+    font-size: 32px;
+    line-height: 1em;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.35s ease-in;    
+}
+
+article h2 a {
+    color: $dgrey;
+}
+
+article h2 i {
+    position: absolute;
+    transform: translateX(-100%);
+    line-height: 34px;
+    font-size: 32px;
+    margin: 0 -30px;
+    color: $grey;
+}
+
+article h2 a:before {
+    content: 'Read Article';
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: absolute;
+    transform: translateY(12px);
+    bottom: 0;
+    line-height: 20px;
+    padding: 0 3px;
+    color: #f69225;
+    opacity: 0;
+    transition: all 0.25s $cubic;
+    width: 100%;
+    pointer-events: none;
+    font-weight: 500;
+}
+
+article h2 a:hover:before {
+    opacity: 1;
+    transform: translateY(30px);
+    background: white;
+    pointer-events: auto;
+    margin-left: -3px;
+}
+
+article .details a {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 500;
+    font-size: 12px;
+    color: $grey;
+    text-transform: uppercase;
+    margin-right: 20px;
+    letter-spacing: 2px;
+}
+
+article .details {
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+article p {
+    font-size: 19px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    line-height: 1.64em;
+    color: $dgrey;
+    margin-bottom: 30px;
+}
+
+article p:last-of-type {
+    margin-bottom: 0;
+}
+
+.solo article {
+    border: none;
+}
+
+footer {
+    background: $blue;
+    height: 200px;
+    padding: 50px 0;
+}
+
+.pagination {
+    margin-bottom: 45px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: $grey;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+@media (max-width: 850px) {
+    .content {
+        padding: 25px 0;
+    }
+    .container {
+        width: 100%;
+        padding: 0 25px;
+        box-sizing: border-box;
+    }
+    header h1 a.goLeft {
+        left: -145px;
+    }
+    header h1 {
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+    article h2 {
+        font-size: 32px;
+    }
+    header {
+        margin-bottom: 20px;
+    }
+    header i,
+    footer i.papership-bw {
+        float: left;
+        margin-left: 0px;
+        position: relative;
+        z-index: 2;
+        height: 50px;
+        /* margin-top: -24px; */
+        width: 34px !important;
+        top: 10px;
+        margin-right: 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    *:before {
+        display: none;
+    }
+}
