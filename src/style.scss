@@ -5,6 +5,12 @@
     padding: 0;
 }
 
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";    font-size: 18px;
 }
@@ -50,6 +56,7 @@ i.papership-bw {
 
 .content {
     padding-top: 50px;
+    flex: 1;
 }
 
 header {
@@ -134,7 +141,14 @@ article {
     @include animation( 'article-anim 0.5s normal forwards');
     animation-timing-function: $cubic;
     animation-fill-mode: forwards;
-    opacity: 0.4
+    opacity: 0.4;
+    display: inline-block;
+    background: white;
+}
+
+article.active {
+    @include animation( 'article-pop 1s normal forwards');
+    animation-timing-function: $cubic;
 }
 
 @include keyframes(article-anim) {
@@ -142,6 +156,7 @@ article {
         transform: translateY(30px);
         opacity: 0.4;
         border-bottom: 0px solid rgba(185, 185, 185, 0);
+        height: 100px;
 	}
 
 	100% {
@@ -151,12 +166,34 @@ article {
 	}
 }
 
+@include keyframes(article-pop) {
+	0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        max-height: 300px;
+    }
+    
+    60% {
+        opacity: 1;
+        transform: scale(1.03);
+        max-height: 1000px;
+    }
+
+	100% {
+        opacity: 1;
+        transform: scale(1);
+        border-bottom: 1px solid rgba(185, 185, 185, 0);
+        max-height: 1000px;
+        top: 150px;
+	}
+}
+
 article.fall {
 	transform: translateY(1000px);
 }
 
 article:last-of-type {
-    /*border: none;*/
+    border: none;
 }
 
 article h2 {
@@ -166,6 +203,7 @@ article h2 {
     font-weight: 500;
     position: relative;
     transition: all 0.35s ease-in;    
+    cursor: pointer;
 }
 
 article h2 a {
@@ -208,6 +246,17 @@ article h2 a:hover:before {
     margin-left: -3px;
 }
 
+.solo article h2 {
+    &:hover {
+        color: $grey;
+        cursor: default;
+    }
+}
+
+.solo article h2 a:hover:before {
+    display: none;
+}
+
 article .details a {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-weight: 500;
@@ -237,6 +286,7 @@ article p:last-of-type {
 
 .solo article {
     border: none;
+    margin-bottom: 100px;
 }
 
 footer {

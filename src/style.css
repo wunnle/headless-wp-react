@@ -2,6 +2,16 @@
   margin: 0;
   padding: 0; }
 
+.App {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh; }
+
 body {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 18px; }
@@ -40,7 +50,10 @@ i.papership-bw {
   width: 54px; }
 
 .content {
-  padding-top: 50px; }
+  padding-top: 50px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
 
 header {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -133,14 +146,26 @@ article {
   animation-timing-function: cubic-bezier(0, 0.53, 0.25, 1.23);
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  opacity: 0.4; }
+  opacity: 0.4;
+  display: inline-block;
+  background: white; }
+
+article.active {
+  -webkit-animation: article-pop 1s normal forwards;
+  -moz-animation: article-pop 1s normal forwards;
+  -ms-animation: article-pop 1s normal forwards;
+  -o-animation: article-pop 1s normal forwards;
+  animation: article-pop 1s normal forwards;
+  -webkit-animation-timing-function: cubic-bezier(0, 0.53, 0.25, 1.23);
+  animation-timing-function: cubic-bezier(0, 0.53, 0.25, 1.23); }
 
 @-webkit-keyframes article-anim {
   0% {
     -webkit-transform: translateY(30px);
     transform: translateY(30px);
     opacity: 0.4;
-    border-bottom: 0px solid rgba(185, 185, 185, 0); }
+    border-bottom: 0px solid rgba(185, 185, 185, 0);
+    height: 100px; }
   100% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
@@ -151,7 +176,8 @@ article {
   0% {
     transform: translateY(30px);
     opacity: 0.4;
-    border-bottom: 0px solid rgba(185, 185, 185, 0); }
+    border-bottom: 0px solid rgba(185, 185, 185, 0);
+    height: 100px; }
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -162,7 +188,8 @@ article {
     -ms-transform: translateY(30px);
     transform: translateY(30px);
     opacity: 0.4;
-    border-bottom: 0px solid rgba(185, 185, 185, 0); }
+    border-bottom: 0px solid rgba(185, 185, 185, 0);
+    height: 100px; }
   100% {
     -ms-transform: translateY(0);
     transform: translateY(0);
@@ -173,7 +200,8 @@ article {
   0% {
     transform: translateY(30px);
     opacity: 0.4;
-    border-bottom: 0px solid rgba(185, 185, 185, 0); }
+    border-bottom: 0px solid rgba(185, 185, 185, 0);
+    height: 100px; }
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -184,12 +212,102 @@ article {
     -webkit-transform: translateY(30px);
     transform: translateY(30px);
     opacity: 0.4;
-    border-bottom: 0px solid rgba(185, 185, 185, 0); }
+    border-bottom: 0px solid rgba(185, 185, 185, 0);
+    height: 100px; }
   100% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
     opacity: 1;
     border-bottom: 1px solid rgba(185, 185, 185, 0.2); } }
+
+@-webkit-keyframes article-pop {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    max-height: 300px; }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    max-height: 1000px; }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    border-bottom: 1px solid rgba(185, 185, 185, 0);
+    max-height: 1000px;
+    top: 150px; } }
+
+@-moz-keyframes article-pop {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    max-height: 300px; }
+  60% {
+    opacity: 1;
+    transform: scale(1.03);
+    max-height: 1000px; }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    border-bottom: 1px solid rgba(185, 185, 185, 0);
+    max-height: 1000px;
+    top: 150px; } }
+
+@-ms-keyframes article-pop {
+  0% {
+    opacity: 1;
+    -ms-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    max-height: 300px; }
+  60% {
+    opacity: 1;
+    -ms-transform: scale(1.03);
+    transform: scale(1.03);
+    max-height: 1000px; }
+  100% {
+    opacity: 1;
+    -ms-transform: scale(1);
+    transform: scale(1);
+    border-bottom: 1px solid rgba(185, 185, 185, 0);
+    max-height: 1000px;
+    top: 150px; } }
+
+@-o-keyframes article-pop {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    max-height: 300px; }
+  60% {
+    opacity: 1;
+    transform: scale(1.03);
+    max-height: 1000px; }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    border-bottom: 1px solid rgba(185, 185, 185, 0);
+    max-height: 1000px;
+    top: 150px; } }
+
+@keyframes article-pop {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    max-height: 300px; }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    max-height: 1000px; }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    border-bottom: 1px solid rgba(185, 185, 185, 0);
+    max-height: 1000px;
+    top: 150px; } }
 
 article.fall {
   -webkit-transform: translateY(1000px);
@@ -197,7 +315,7 @@ article.fall {
   transform: translateY(1000px); }
 
 article:last-of-type {
-  /*border: none;*/ }
+  border: none; }
 
 article h2 {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -208,7 +326,8 @@ article h2 {
   position: relative;
   -webkit-transition: all 0.35s ease-in;
   -o-transition: all 0.35s ease-in;
-  transition: all 0.35s ease-in; }
+  transition: all 0.35s ease-in;
+  cursor: pointer; }
 
 article h2 a {
   color: #4a4a4a; }
@@ -254,6 +373,13 @@ article h2 a:hover:before {
   pointer-events: auto;
   margin-left: -3px; }
 
+.solo article h2:hover {
+  color: #b9b9b9;
+  cursor: default; }
+
+.solo article h2 a:hover:before {
+  display: none; }
+
 article .details a {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-weight: 500;
@@ -278,7 +404,8 @@ article p:last-of-type {
   margin-bottom: 0; }
 
 .solo article {
-  border: none; }
+  border: none;
+  margin-bottom: 100px; }
 
 footer {
   background: #0d7abf;
