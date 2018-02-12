@@ -52,11 +52,11 @@ class App extends Component {
           <div className="container">
             <Header handleHomeClick={this.handleHomeClick} />
             {/* {this.state.articles.length === 1  ? <Single article={this.state.articles[0]}/> : <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>} */}
-            <Route exact path="/"
+            <Route exact path={`${process.env.PUBLIC_URL}/`}
             render={() => <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>}>      
             </Route>
             {this.state.allArticles.length > 0 && 
-            <Route path="/:postSlug" render={({match}) => (
+            <Route path={`${process.env.PUBLIC_URL}/:postSlug`} render={({match}) => (
               <FakeArticle articleKey={match.params.postSlug} article={this.state.allArticles.find(a => a.slug === match.params.postSlug)} />
             )}></Route>}
           </div>
@@ -75,7 +75,7 @@ const Header = (props) => (
   <header>
     <i className="papership" />
     <h1 onClick={props.handleHomeClick}>
-      <Link to='/'>blog</Link>
+      <Link to={`${process.env.PUBLIC_URL}/`}>blog</Link>
     </h1>
 
   </header>

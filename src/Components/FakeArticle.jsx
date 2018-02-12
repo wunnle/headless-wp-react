@@ -12,7 +12,7 @@ class FakeArticle extends Component {
     return (
       <div>
         <article>
-          <Link to={`/${article.slug}`}>
+          <Link to={`${process.env.PUBLIC_URL}/${article.slug}`}>
             <h2>
               <i className="emoji">{article.acf.emoji}</i>
               {article.title.rendered}
