@@ -4,8 +4,10 @@
   "private": true,
   "homepage": "http://wunnle.com/react-blog/",
   "dependencies": {
+    "html-to-text": "^3.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "sanitize-html": "^1.17.0"
   },

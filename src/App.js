@@ -1,7 +1,8 @@
 import React, { Component } from "react"
 import "./style.css"
 import Multi from "./Components/Multi.jsx"
-import Single from "./Components/Single.jsx"
+import { Link,  Route} from 'react-router-dom';
+import FakeArticle from './Components/FakeArticle'
 
 class App extends Component {
   constructor() {
@@ -44,12 +45,20 @@ class App extends Component {
 
   render() {
     console.log("articles", this.state.articles);
+    console.log(this.state.allArticles.find(a => a.slug === "kif-are-you-recording-this"))
     return (
       <div className="App">
         <div className="content">
           <div className="container">
             <Header handleHomeClick={this.handleHomeClick} />
-            {this.state.articles.length === 1  ? <Single article={this.state.articles[0]}/> : <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>}
+            {/* {this.state.articles.length === 1  ? <Single article={this.state.articles[0]}/> : <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>} */}
+            <Route exact path="/"
+            render={() => <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>}>      
+            </Route>
+            {this.state.allArticles.length > 0 && 
+            <Route path="/:postSlug" render={({match}) => (
+              <FakeArticle articleKey={match.params.postSlug} article={this.state.allArticles.find(a => a.slug === match.params.postSlug)} />
+            )}></Route>}
           </div>
         </div>
         <footer>
@@ -66,8 +75,9 @@ const Header = (props) => (
   <header>
     <i className="papership" />
     <h1 onClick={props.handleHomeClick}>
-      <a href="index.html">blog</a>
+      <Link to='/'>blog</Link>
     </h1>
+
   </header>
 );
 export default App;

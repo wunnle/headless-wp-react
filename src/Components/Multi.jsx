@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import Article from './Article'
-import sanitizeHtml from 'sanitize-html'
+import FakeArticle from './FakeArticle'
 
 
 class Multi extends Component {
@@ -10,13 +9,13 @@ class Multi extends Component {
     getExcerpt = (content) => {
         let el = document.createElement('html')
         el.innerHTML = content
-        return sanitizeHtml('<p>' + el.querySelector('p').innerHTML + '</p>')
+        return ('<p>' + el.querySelector('p').innerHTML + '</p>')
     }
     render() {
         return (
             <div>
                 {this.props.articles.map(article => 
-                    <Article id={article.id} handleClick={this.handleArticleClick} key={article.id} title={article.title.rendered} content={this.getExcerpt(article.content.rendered)} cat={article.acf.category} emoji={article.acf.emoji} />
+                    <FakeArticle key={article.id} article={article} content={this.getExcerpt(article.content.rendered)}/>
                 )}
             </div>
         )
