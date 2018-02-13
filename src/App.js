@@ -56,9 +56,10 @@ class App extends Component {
             render={() => <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>}>      
             </Route>
             {this.state.allArticles.length > 0 && 
-            <Route path={`${process.env.PUBLIC_URL}/:postSlug`} render={({match}) => (
-              <Article articleKey={match.params.postSlug} article={this.state.allArticles.find(a => a.slug === match.params.postSlug)} />
-            )}></Route>}
+            <Route path={`${process.env.PUBLIC_URL}/:postSlug`} render={({match}) => {
+              let m = this.state.allArticles.find(a => a.slug === match.params.postSlug)
+              return m ? <Article articleKey={match.params.postSlug} article={m} /> :  <FourOhFour />
+            }}></Route>}
           </div>
         </div>
         <footer>
@@ -70,6 +71,16 @@ class App extends Component {
     );
   }
 }
+
+const FourOhFour = (props) => (
+  <div className="fourohfour">
+    <i className="emoji">💩</i>
+    <h1>404</h1>
+    <h2>Whoooopps!</h2>
+    <p>Looks like you've got lost.</p>
+    <Link to={`${process.env.PUBLIC_URL}/`}>Go back home</Link>
+  </div>
+)
 
 const Header = (props) => (
   <header>
