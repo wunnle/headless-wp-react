@@ -135,7 +135,6 @@ footer i.papership-bw {
 article {
     margin-bottom: 55px;
     padding-bottom: 45px;
-    border-bottom: 0px solid rgba(185, 185, 185, 0);
     transform: translateY(30px);
     //transition: all .45s $cubic, opacity 0.5s ease-in, border 2s ease;
     @include animation( 'article-anim 0.5s normal forwards');
@@ -155,14 +154,14 @@ article.active {
 	0% {
         transform: translateY(30px);
         opacity: 0.4;
-        border-bottom: 0px solid rgba(185, 185, 185, 0);
+        border-bottom-color: rgba(185, 185, 185, 0);
         height: 100px;
 	}
 
 	100% {
         transform: translateY(0);
         opacity: 1;
-        border-bottom: 1px solid rgba(185, 185, 185, 0.2);
+        border-bottom-color: rgba(185, 185, 185, 0.2);
 	}
 }
 
@@ -206,8 +205,9 @@ article h2 {
     cursor: pointer;
 }
 
-article h2 a {
+article h2 a, article h2 a:hover {
     color: $dgrey;
+    cursor: default;
 }
 
 article h2 i {
@@ -219,7 +219,12 @@ article h2 i {
     color: $grey;
 }
 
-article h2 a:before {
+.multi-article article {
+    border-bottom: 1px solid rgba(185, 185, 185, 0.2);
+}
+
+.multi-article article h2 a:before {
+    display: block;
     content: 'Read Article';
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-size: 12px;
@@ -238,7 +243,7 @@ article h2 a:before {
     font-weight: 500;
 }
 
-article h2 a:hover:before {
+.multi-article article h2 a:hover:before {
     opacity: 1;
     transform: translateY(30px);
     background: white;
@@ -246,15 +251,8 @@ article h2 a:hover:before {
     margin-left: -3px;
 }
 
-.solo article h2 {
-    &:hover {
-        color: $grey;
-        cursor: default;
-    }
-}
-
-.solo article h2 a:hover:before {
-    display: none;
+.multi-article article h2 a {
+    cursor: pointer;
 }
 
 article .details a {

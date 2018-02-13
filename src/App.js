@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import "./style.css"
 import Multi from "./Components/Multi.jsx"
 import { Link,  Route} from 'react-router-dom';
-import FakeArticle from './Components/FakeArticle'
+import Article from './Components/Article'
 
 class App extends Component {
   constructor() {
@@ -57,7 +57,7 @@ class App extends Component {
             </Route>
             {this.state.allArticles.length > 0 && 
             <Route path={`${process.env.PUBLIC_URL}/:postSlug`} render={({match}) => (
-              <FakeArticle articleKey={match.params.postSlug} article={this.state.allArticles.find(a => a.slug === match.params.postSlug)} />
+              <Article articleKey={match.params.postSlug} article={this.state.allArticles.find(a => a.slug === match.params.postSlug)} />
             )}></Route>}
           </div>
         </div>

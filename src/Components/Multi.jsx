@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FakeArticle from './FakeArticle'
+import Article from './Article'
 
 
 class Multi extends Component {
@@ -13,9 +13,9 @@ class Multi extends Component {
     }
     render() {
         return (
-            <div>
+            <div class="multi-article">
                 {this.props.articles.map(article => 
-                    <FakeArticle key={article.id} article={article} content={this.getExcerpt(article.content.rendered)}/>
+                    <Article key={article.id} article={article} content={this.getExcerpt(article.content.rendered)}/>
                 )}
             </div>
         )

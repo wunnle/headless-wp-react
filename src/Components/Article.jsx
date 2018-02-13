@@ -5,19 +5,24 @@ import sanitizeHtml from 'sanitize-html'
 
 
 
-class FakeArticle extends Component {
+class Article extends Component {
+  cleanHtml = (html) => {
+    return sanitizeHtml(html, {
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'b', 'i', 'em'])
+    })
+  }
   render() {
     const article = this.props.article;
-    const content = this.props.content ? sanitizeHtml(this.props.content) : sanitizeHtml(article.content.rendered)
+    const content = this.props.content ? this.cleanHtml(this.props.content) : this.cleanHtml(article.content.rendered)
     return (
       <div>
         <article>
-          <Link to={`${process.env.PUBLIC_URL}/${article.slug}`}>
             <h2>
+            <Link to={`${process.env.PUBLIC_URL}/${article.slug}`}>
               <i className="emoji">{article.acf.emoji}</i>
               {article.title.rendered}
+              </Link>
             </h2>
-          </Link>
           <div className="details">
             <a>{article.acf.category}</a>
             <a>{this.calcTimeToRead()} minute read</a>
@@ -41,4 +46,4 @@ class FakeArticle extends Component {
   }
 }
 
-export default FakeArticle;
+export default Article;
