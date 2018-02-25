@@ -9,11 +9,14 @@ class Multi extends Component {
     getExcerpt = (content) => {
         let el = document.createElement('html')
         el.innerHTML = content
-        return ('<p>' + el.querySelector('p').innerHTML + '</p>')
+        console.log(el)
+        if(el.querySelector('p') !== null) {
+            return ('<p>' + el.querySelector('p').innerHTML + '</p>')
+        }
     }
     render() {
         return (
-            <div class="multi-article">
+            <div className="multi-article">
                 {this.props.articles.map(article => 
                     <Article key={article.id} article={article} content={this.getExcerpt(article.content.rendered)}/>
                 )}
