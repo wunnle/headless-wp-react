@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import ScrollToTop from "./Components/ScrollToTop";
 import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
-    <App />
+  <BrowserRouter>
+    <ScrollToTop>
+      <App />
+    </ScrollToTop>
   </BrowserRouter>,
   document.getElementById("root")
 );
