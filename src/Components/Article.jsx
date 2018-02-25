@@ -23,7 +23,7 @@ class Article extends Component {
       <div>
         <article>
           <div className="article__top-details">
-            <a>{article.acf.category}</a>
+            <Link to={`${process.env.PUBLIC_URL}/${article.acf.category}`}>{article.acf.category}</Link>
           </div>
           <h2>
             <Link to={`${process.env.PUBLIC_URL}/${article.slug}`}>

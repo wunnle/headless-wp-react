@@ -11,12 +11,14 @@ class App extends Component {
       allArticles: [],
       articles: [],
       dataURL: "http://wunnle.com/headless/wp-json/wp/v2/article?_embed",
+      catURL: "http://wunnle.com/headless/wp-json/wp/v2/categories",
       filterID: null
     };
   }
 
   componentDidMount() {
     let dataURL = this.state.dataURL;
+    let catURL = this.state.catURL;
     fetch(dataURL)
       .then(res => res.json())
       .then(res => {
@@ -25,6 +27,15 @@ class App extends Component {
           articles: res
         });
       });
+
+    fetch(catURL)
+    .then(res => res.json())
+    .then(res => {
+      this.setState({
+        cats: res.filter(cat => ({name: cat.name, slug: cat.slug}))
+      })
+      console.log('cats', res)
+    })
   }
 
   handleArticleClick = (e, id) => {
@@ -51,14 +62,19 @@ class App extends Component {
         <div className="content">
           <div className="container">
             <Header handleHomeClick={this.handleHomeClick} />
-            {/* {this.state.articles.length === 1  ? <Single article={this.state.articles[0]}/> : <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>} */}
             <Route exact path={`${process.env.PUBLIC_URL}/`}
             render={() => <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>}>      
             </Route>
             {this.state.allArticles.length > 0 && 
             <Route path={`${process.env.PUBLIC_URL}/:postSlug`} render={({match}) => {
               let m = this.state.allArticles.find(a => a.slug === match.params.postSlug)
-              return m ? <Article articleKey={match.params.postSlug} article={m} /> :  <FourOhFour />
+              if(m) {
+                return <Article articleKey={match.params.postSlug} article={m} />
+              } else if(this.state.allArticles.find(a => a.acf.category === match.params.postSlug)) {
+                return <Multi articles={this.state.articles.filter(a => a.acf.category === match.params.postSlug)} />
+              } else {
+                return <FourOhFour />
+              }
             }}></Route>}
           </div>
         </div>
