@@ -9,7 +9,6 @@ class Multi extends Component {
     getExcerpt = (content) => {
         let el = document.createElement('html')
         el.innerHTML = content
-        console.log(el)
         if(el.querySelector('p') !== null) {
             return ('<p>' + el.querySelector('p').innerHTML + '</p>')
         }

@@ -57,9 +57,6 @@ class Article extends Component {
   calcDateTime = t => {
     const date = new Date(t)
     let dateStr
-    console.log('month', date.getMonth())
-    console.log('year', date.getFullYear())
-    console.log('day', date.getDate())
 
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     const now = new Date()

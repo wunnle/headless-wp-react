@@ -34,7 +34,6 @@ class App extends Component {
       this.setState({
         cats: res.filter(cat => ({name: cat.name, slug: cat.slug}))
       })
-      console.log('cats', res)
     })
   }
 
@@ -55,8 +54,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("articles", this.state.articles);
-    console.log(this.state.allArticles.find(a => a.slug === "kif-are-you-recording-this"))
     return (
       <div className="App">
         <div className="content">
