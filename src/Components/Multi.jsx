@@ -11,6 +11,9 @@ class Multi extends Component {
         el.innerHTML = content
         if(el.querySelector('p') !== null) {
             return ('<p>' + el.querySelector('p').innerHTML + '</p>')
+        } else {
+            console.log('2', console.log(content))
+            return content.substring(1, 200)
         }
     }
     render() {

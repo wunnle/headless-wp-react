@@ -63,7 +63,7 @@ class Article extends Component {
 
     if (now.getFullYear() ==! date.getFullYear()) {
       dateStr = months[date.getMonth()] + ' ' + date.getDate() + ' ' + date.getFullYear()
-    } else if(now.getFullYear() == date.getFullYear() && now.getMonth() == date.getMonth() && now.getDate() == date.getDate() ) {
+    } else if(now.getFullYear() === date.getFullYear() && now.getMonth() === date.getMonth() && now.getDate() == date.getDate() ) {
       if(date.getHours() - now.getHours() > 0) {
           dateStr = date.getHours() - now.getHours() + ' hours ago'
       } else {
