@@ -156,13 +156,13 @@ article {
     transform: translateX(-80px);
 
     &::-webkit-scrollbar {
-        width: 4px;
+        width: 6px;
     }
 
     &::-webkit-scrollbar-track {
         -webkit-border-radius: 10px;
         border-radius: 10px;
-        background: #c1c1c1;
+        background: #faf5f5;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -172,7 +172,7 @@ article {
     }
     
     &::-webkit-scrollbar-thumb:window-inactive {
-        background: rgba(255,0,0,0.4); 
+        background: rgba(255,0,0,0.01); 
     }
 }
 
@@ -181,7 +181,7 @@ article {
     top: 50px;
     box-shadow: 0 4px 60px rgba(0,0,0,0.04);
     opacity: 1;
-    padding: 60px 50px 0 100px;
+    padding: 60px 120px 60px 120px;
     width: 800px;
     box-sizing: border-box;
 }
@@ -191,11 +191,11 @@ article {
     top: 50px;
     box-shadow: 0 4px 60px rgba(0,0,0,0.04);
     opacity: 1;
-    padding: 60px 120px 0 120px;
+    padding: 60px 120px 60px 120px;
     width: 800px;
     box-sizing: border-box;
     transform: translateX(-100px);
-    height: 100%;
+    height: calc(100% - 50px);
 }
 
 article.active {
