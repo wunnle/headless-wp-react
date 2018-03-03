@@ -38,11 +38,11 @@ class App extends Component {
   }
 
   handleArticleClick = (e, id) => {
-    const articles = this.state.allArticles.filter(article => article.id === id)
-    this.setState({
-      filterID: id,
-      articles: articles
-    });
+    // const articles = this.state.allArticles.filter(article => article.id === id)
+    // this.setState({
+    //   filterID: id,
+    //   articles: articles
+    // });
   };
 
   handleHomeClick = (e) => {

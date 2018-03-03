@@ -131,24 +131,60 @@ footer i.papership-bw {
 
 /* article */
 article {
-  margin-bottom: 55px;
   padding-bottom: 45px;
-  -webkit-transform: translateY(30px);
-  -ms-transform: translateY(30px);
-  transform: translateY(30px);
-  -webkit-animation: article-anim 0.5s normal forwards;
-  -moz-animation: article-anim 0.5s normal forwards;
-  -ms-animation: article-anim 0.5s normal forwards;
-  -o-animation: article-anim 0.5s normal forwards;
-  animation: article-anim 0.5s normal forwards;
-  -webkit-animation-timing-function: cubic-bezier(0, 0.53, 0.25, 1.23);
-  animation-timing-function: cubic-bezier(0, 0.53, 0.25, 1.23);
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  opacity: 0.4;
+  -webkit-transition: height 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), left 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), top 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), opacity 0.5s ease-in, padding 0.3s ease-in, width 0.3s ease-in;
+  -o-transition: height 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), left 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), top 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), opacity 0.5s ease-in, padding 0.3s ease-in, width 0.3s ease-in;
+  transition: height 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), left 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), top 0.45s cubic-bezier(0.855, -0.505, 0.225, 1.275), opacity 0.5s ease-in, padding 0.3s ease-in, width 0.3s ease-in;
   display: inline-block;
   background: white;
-  width: 660px; }
+  padding: 30px 30px 30px 100px;
+  width: 700px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 4px 40px transparent;
+  box-shadow: 0 4px 40px transparent;
+  border-radius: 10px;
+  -webkit-transform: translateX(-80px);
+  -ms-transform: translateX(-80px);
+  transform: translateX(-80px); }
+  article::-webkit-scrollbar {
+    width: 4px; }
+  article::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #c1c1c1; }
+  article::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #c1c1c1; }
+  article::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 0, 0, 0.4); }
+
+.article--animating {
+  position: fixed;
+  top: 50px;
+  -webkit-box-shadow: 0 4px 60px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.04);
+  opacity: 1;
+  padding: 60px 50px 0 100px;
+  width: 800px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.article--solo {
+  position: fixed;
+  top: 50px;
+  -webkit-box-shadow: 0 4px 60px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.04);
+  opacity: 1;
+  padding: 60px 120px 0 120px;
+  width: 800px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: translateX(-100px);
+  -ms-transform: translateX(-100px);
+  transform: translateX(-100px);
+  height: 100%; }
 
 article.active {
   -webkit-animation: article-pop 1s normal forwards;
@@ -158,6 +194,9 @@ article.active {
   animation: article-pop 1s normal forwards;
   -webkit-animation-timing-function: cubic-bezier(0, 0.53, 0.25, 1.23);
   animation-timing-function: cubic-bezier(0, 0.53, 0.25, 1.23); }
+
+.articleShadow {
+  margin-bottom: 55px; }
 
 @-webkit-keyframes article-anim {
   0% {
@@ -313,9 +352,6 @@ article.fall {
   -webkit-transform: translateY(1000px);
   -ms-transform: translateY(1000px);
   transform: translateY(1000px); }
-
-article:last-of-type {
-  border: none; }
 
 article h2 {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -510,3 +546,6 @@ footer {
     margin: 0 -30px;
     color: #b9b9b9;
     top: -6px; }
+
+.no-overflow {
+  overflow: hidden; }
