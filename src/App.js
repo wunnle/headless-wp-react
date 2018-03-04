@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./style.css"
 import Multi from "./Components/Multi.jsx"
-import { Link,  Route} from 'react-router-dom';
+import {Link,  Route} from 'react-router-dom';
 import Article from './Components/Article'
 
 class App extends Component {
@@ -56,23 +56,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="ruler"></div>
         <div className="content">
           <div className="container">
             <Header handleHomeClick={this.handleHomeClick} />
-            <Route exact path={`${process.env.PUBLIC_URL}/`}
+            {this.state.allArticles.length > 0 ? <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/> : 'loading'}
+            {/* <Route exact path={`${process.env.PUBLIC_URL}/`}
             render={() => <Multi articles={this.state.articles} handleArticleClick={this.handleArticleClick}/>}>      
             </Route>
             {this.state.allArticles.length > 0 && 
             <Route path={`${process.env.PUBLIC_URL}/:postSlug`} render={({match}) => {
               let m = this.state.allArticles.find(a => a.slug === match.params.postSlug)
               if(m) {
-                return <Article articleKey={match.params.postSlug} article={m} />
+                return <Article solo={true} articleKey={match.params.postSlug} article={m} />
               } else if(this.state.allArticles.find(a => a.acf.category === match.params.postSlug)) {
                 return <Multi articles={this.state.articles.filter(a => a.acf.category === match.params.postSlug)} />
               } else {
                 return <FourOhFour />
               }
-            }}></Route>}
+            }}></Route>} */}
           </div>
         </div>
         <footer>
